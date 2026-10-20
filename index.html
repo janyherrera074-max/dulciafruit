@@ -251,7 +251,9 @@ PRODUCTOS.forEach(p => {
     ${p.precio ? `<span class="price">${esc(p.precio)}</span>` : ""}
     <button class="btn small" data-info="${p.id}">Más información</button></div>`);
   $("#productGrid").append(c);
-  $("#gallery").append(el("button", { type: "button", className: "reveal" }, `<img src="${p.img}" alt="${esc(p.alt)}" width="640" height="640" loading="lazy"><span>${esc(p.nombre)}</span>`)).lastChild.onclick = () => openModal(p, false);
+  const g = el("button", { type: "button", className: "reveal" }, `<img src="${p.img}" alt="${esc(p.alt)}" width="640" height="640" loading="lazy"><span>${esc(p.nombre)}</span>`);
+  g.onclick = () => openModal(p, false);
+  $("#gallery").append(g);
   $("#product").append(new Option(p.nombre, p.nombre));
 });
 
